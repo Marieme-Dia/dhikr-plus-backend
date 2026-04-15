@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "https://dhikr-plus-frontend.vercel.app")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
