@@ -1,11 +1,11 @@
-# Étape 1 : Build avec une image Maven plus récente et légère
-FROM maven:3.9.6-eclipse-temurin-17-alpine AS build
+# Étape 1 : Construction
+FROM maven:3.8.5-openjdk-17 AS build
 WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-# Étape 2 : Exécution avec un JRE léger
-FROM eclipse-temurin:17-jre-alpine
+# Étape 2 : Exécution
+FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
